@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Démo - Votre coiffeur à deux pas de chez vous</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for lightbox and animations */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d1a054;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .appointment-btn {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .appointment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Sticky Header with Appointment Button -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-scissors text-2xl text-amber-600 mr-2"></i>
+                <h1 class="text-xl font-bold text-gray-800">Salon Démo</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="#services" class="nav-link">Prestations</a>
+                <a href="#pricing" class="nav-link">Tarifs</a>
+                <a href="#gallery" class="nav-link">Galerie</a>
+                <a href="#testimonials" class="nav-link">Avis</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="appointment-btn bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full font-medium">
+                <i class="fas fa-calendar-alt mr-2"></i>Prendre RDV
+            </button>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Accueil</a>
+                <a href="#services" class="nav-link">Prestations</a>
+                <a href="#pricing" class="nav-link">Tarifs</a>
+                <a href="#gallery" class="nav-link">Galerie</a>
+                <a href="#testimonials" class="nav-link">Avis</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-amber-50 to-amber-100">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Votre coiffeur à deux pas de chez vous</h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8">Coupe, couleur, soins ou coiffure événementielle : offrez-vous un moment rien qu'à vous dans un cadre élégant et accueillant.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="appointment-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium">
+                        <i class="fas fa-calendar-alt mr-2"></i>Prendre rendez-vous
+                    </button>
+                    <button class="bg-white hover:bg-gray-100 text-amber-700 px-6 py-3 rounded-full font-medium border border-amber-200">
+                        <i class="fas fa-phone-alt mr-2"></i>Nous appeler
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center fade-in">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                     alt="Salon de coiffure élégant" 
+                     class="rounded-lg shadow-xl w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nos prestations</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Chez Salon Démo, nous vous proposons une gamme complète de services pour prendre soin de vos cheveux, quelle que soit l'occasion. Notre équipe de coiffeurs professionnels est à votre écoute pour vous conseiller et vous accompagner.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-cut text-2xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Coupe & Coiffage</h3>
+                    <p class="text-gray-600 text-center">Homme, femme, enfant - Des coupes adaptées à votre style et à votre morphologie.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-paint-brush text-2xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Coloration</h3>
+                    <p class="text-gray-600 text-center">Balayage, ombré, racines, ton sur ton - Des couleurs naturelles et éclatantes.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-spa text-2xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Soins capillaires</h3>
+                    <p class="text-gray-600 text-center">Réparateurs, hydratants, kératine - Redonnez vie à vos cheveux fatigués.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-glass-cheers text-2xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Coiffure événementielle</h3>
+                    <p class="text-gray-600 text-center">Mariage, soirée, shooting - Des coiffures qui subliment vos moments spéciaux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tarifs</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Des prix transparents et abordables pour toutes nos prestations. Un devis personnalisé peut être établi selon vos besoins spécifiques (coloration, événements, soins particuliers).</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Price Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-amber-600 py-4 px-6">
+                        <h3 class="text-xl font-semibold text-white">Coupes</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Coupe femme</span>
+                                <span class="font-medium">à partir de 35 €</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Coupe homme</span>
+                                <span class="font-medium">à partir de 20 €</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Coupe enfant</span>
+                                <span class="font-medium">à partir de 15 €</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Coupe + brushing</span>
+                                <span class="font-medium">à partir de 50 €</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Price Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-amber-600 py-4 px-6">
+                        <h3 class="text-xl font-semibold text-white">Couleurs & Soins</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Coloration racines</span>
+                                <span class="font-medium">à partir de 40 €</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Balayage</span>
+                                <span class="font-medium">à partir de 60 €</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Soin hydratant</span>
+                                <span class="font-medium">à partir de 25 €</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Soin kératine</span>
+                                <span class="font-medium">à partir de 80 €</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Price Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-amber-600 py-4 px-6">
+                        <h3 class="text-xl font-semibold text-white">Autres Services</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Brushing</span>
+                                <span class="font-medium">à partir de 20 €</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Coiffure mariage</span>
+                                <span class="font-medium">sur devis</span>
+                            </li>
+                            <li class="flex justify-between border-b pb-2">
+                                <span>Mèches</span>
+                                <span class="font-medium">à partir de 45 €</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Permanente</span>
+                                <span class="font-medium">à partir de 70 €</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">Vous avez des besoins spécifiques ? Nous établissons des devis personnalisés.</p>
+                <button class="appointment-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium">
+                    <i class="fas fa-envelope mr-2"></i>Demander un devis
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nos réalisations</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Découvrez quelques-unes de nos dernières créations. Du style classique aux tendances les plus modernes, nous adaptons chaque coiffure à votre personnalité.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Coiffure femme moderne" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Coupe moderne</h3>
+                        <p class="text-sm text-gray-600">Coloration balayage</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Salon de coiffure élégant" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Espace salon</h3>
+                        <p class="text-sm text-gray-600">Cadre élégant et accueillant</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Coiffure de mariage" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Coiffure mariage</h3>
+                        <p class="text-sm text-gray-600">Style romantique</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1580489944761-15a05d6e8c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a05d6e8c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Coupe homme" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Coupe homme</h3>
+                        <p class="text-sm text-gray-600">Style moderne et élégant</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1596704017256-dfb4a4b5f3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1596704017256-dfb4a4b5f3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Coloration cheveux" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Coloration</h3>
+                        <p class="text-sm text-gray-600">Ombré hair</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Soin capillaire" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-gray-50">
+                        <h3 class="font-medium text-gray-800">Soin capillaire</h3>
+                        <p class="text-sm text-gray-600">Soin hydratant intensif</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lightbox -->
+            <div id="lightbox" class="lightbox">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img id="lightbox-img" class="lightbox-content" src="" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Ce qu'ils disent de nous</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nos clients nous font confiance, et ils en parlent mieux que nous.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Accueil chaleureux, coupe parfaite, je recommande à 100% ! J'ai enfin trouvé un salon où je me sens bien et où le résultat est toujours impeccable."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Sophie L.</h4>
+                            <p class="text-sm text-gray-500">Client depuis 2 ans</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Une équipe à l'écoute, un résultat impeccable à chaque visite. Je viens de loin exprès pour me faire coiffer ici. Le salon est très agréable et les prix raisonnables."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Thomas M.</h4>
+                            <p class="text-sm text-gray-500">Client depuis 3 ans</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                            <i class="fas fa-star text-amber-400"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">"Coiffure de mariage sublime, merci infiniment pour votre professionnalisme. Vous avez su comprendre exactement ce que je voulais et le résultat était encore mieux que ce que j'imaginais."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Camille D.</h4>
+                            <p class="text-sm text-gray-500">Client occasionnel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-white hover:bg-gray-100 text-amber-700 px-6 py-3 rounded-full font-medium border border-amber-200">
+                    <i class="fas fa-pen mr-2"></i>Laisser un avis
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Un salon à taille humaine</h2>
+                    <p class="text-lg text-gray-600 mb-6">Ouvert depuis 2016, Salon Démo est un lieu de bien-être, de conseil et de mise en beauté. Notre équipe passionnée met tout en œuvre pour que chaque visite soit une parenthèse de confort et de satisfaction.</p>
+                    <p class="text-lg text-gray-600">Que vous veniez pour une coupe express ou un changement de style complet, nous vous accompagnons avec écoute et professionnalisme. Notre objectif : que vous repartiez avec le sourire et une coiffure qui vous plaît.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Équipe du salon" 
+                             class="rounded-lg shadow-xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-amber-600 text-white p-4 rounded-lg shadow-lg">
+                            <p class="text-xl font-bold">8 ans</p>
+                            <p class="text-sm">d'expérience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nous contacter</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Envie de changer de look ou de prendre simplement soin de vous ? Contactez-nous ou prenez rendez-vous directement en ligne.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+                <!-- Contact Info -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6">Nos coordonnées</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Adresse</h4>
+                                    <p class="text-gray-600">12 rue du Salon, 75000 Paris</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone -->
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Téléphone</h4>
+                                    <p class="text-gray-600">01 23 45 67 89</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">contact@salondemo.fr</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Hours -->
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Horaires</h4>
+                                    <p class="text-gray-600">Lundi – Samedi : 9h – 19h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-800 mb-4">Nous suivre</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                                    <i class="fab fa-pinterest-p"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Appointment Form -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6">Prendre rendez-vous</h3>
+                        <form id="appointment-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nom complet</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date souhaitée</label>
+                                <input type="date" id="date" name="date" required 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Prestation</label>
+                                <select id="service" name="service" required 
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                                    <option value="">Sélectionnez une prestation</option>
+                                    <option value="coupe-femme">Coupe femme</option>
+                                    <option value="coupe-homme">Coupe homme</option>
+                                    <option value="coloration">Coloration</option>
+                                    <option value="soin">Soin capillaire</option>
+                                    <option value="coiffure-evenement">Coiffure événementielle</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (optionnel)</label>
+                                <textarea id="message" name="message" rows="3" 
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full appointment-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium mt-4">
+                                Envoyer la demande
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map -->
+    <div class="h-96 w-full bg-gray-200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991440608209!2d2.292292615638578!3d48.85837360866185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1685544296312!5m2!1sfr!2sfr" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-scissors text-2xl text-amber-400 mr-2"></i>
+                        <h3 class="text-xl font-bold">Salon Démo</h3>
+                    </div>
+                    <p class="text-gray-400">Votre salon de coiffure à Paris depuis 2016. Professionnalisme, écoute et qualité à votre service.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-amber-400 transition-colors">Accueil</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-amber-400 transition-colors">Prestations</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-amber-400 transition-colors">Tarifs</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-amber-400 transition-colors">Galerie</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Coupes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Coloration</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Soins</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Coiffure événementielle</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">Barbier</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos offres spéciales.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" 
+                               class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Salon Démo. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-600 text-white w-12 h-12 rounded-full shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Lightbox Functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imageSrc;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Form Submission
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this demo, we'll just show an alert
+            alert('Votre demande de rendez-vous a bien été envoyée. Nous vous contacterons rapidement pour confirmation.');
+            
+            // Reset the form
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Add fade-in animation when elements come into view
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
