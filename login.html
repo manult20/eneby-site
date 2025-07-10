@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Eneby Vision</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        eneby: {
+                            dark: '#0f172a',
+                            semidark: '#1e293b',
+                            primary: '#3b82f6',
+                            secondary: '#8b5cf6',
+                            accent: '#6366f1',
+                        },
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .radial-bg {
+            background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 100%);
+        }
+        .blob {
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="font-inter bg-eneby-dark text-gray-100 min-h-screen radial-bg overflow-hidden">
+    <!-- Background blobs -->
+    <div class="fixed -top-40 -left-40 w-80 h-80 rounded-full bg-eneby-primary blob"></div>
+    <div class="fixed -bottom-40 -right-40 w-80 h-80 rounded-full bg-eneby-secondary blob"></div>
+
+    <!-- Header -->
+    <header class="container mx-auto px-6 py-4 animate-fade-in-up">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">Eneby Vision</a>
+            <a href="#" class="text-sm text-gray-400 hover:text-white transition-colors duration-200">← Retour à l'accueil</a>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-6 flex flex-col justify-center items-center min-h-[calc(100vh-160px)]">
+        <div class="w-full max-w-md animate-fade-in-up" style="animation-delay: 0.1s">
+            <div class="backdrop-blur-sm bg-eneby-semidark/80 border border-gray-700/50 rounded-xl p-8 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <h1 class="text-2xl font-bold text-center mb-6">Connexion</h1>
+                
+                <form class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1">Adresse email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="votre@email.com" 
+                            class="w-full px-4 py-3 bg-eneby-dark/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-eneby-primary focus:border-transparent outline-none transition-all"
+                            required
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block text-sm font-medium mb-1">Mot de passe</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            placeholder="••••••••" 
+                            class="w-full px-4 py-3 bg-eneby-dark/50 border border-gray-700 rounded-lg focus:ring-2 focus:ring-eneby-primary focus:border-transparent outline-none transition-all"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input 
+                                type="checkbox" 
+                                id="remember" 
+                                class="w-4 h-4 text-eneby-primary rounded border-gray-600 focus:ring-eneby-primary"
+                            >
+                            <label for="remember" class="ml-2 text-sm">Se souvenir de moi</label>
+                        </div>
+                        
+                        <a href="#" class="text-sm text-eneby-primary hover:underline">Mot de passe oublié ?</a>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full gradient-bg text-white py-3 px-4 rounded-lg font-medium hover:opacity-90 transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-eneby-primary focus:ring-offset-eneby-semidark"
+                    >
+                        Se connecter
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center text-sm">
+                    <span class="text-gray-400">Nouveau sur Eneby Vision ? </span>
+                    <a href="#" class="text-eneby-primary font-medium hover:underline">Créer un compte</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-6 py-4 text-center text-sm text-gray-500 animate-fade-in-up" style="animation-delay: 0.2s">
+        © 2023 Eneby Vision. Tous droits réservés.
+    </footer>
+
+    <script>
+        // Simple script to add animation classes on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('[class*="animate-"]');
+            elements.forEach(el => {
+                const classes = el.className.split(' ');
+                const animateClass = classes.find(c => c.startsWith('animate-'));
+                el.classList.remove(animateClass);
+                void el.offsetWidth; // Trigger reflow
+                el.classList.add(animateClass);
+            });
+        });
+    </script>
+</body>
+</html>
