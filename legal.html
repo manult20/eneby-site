@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Eneby Vision – Mentions Légales</title>
+  <link rel="icon" href="./images/logo.png" type="image/png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @keyframes bounce-slow {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    .animate-bounce-slow { animation: bounce-slow 3s infinite; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    .nav-link { position: relative; }
+    .nav-link:after {
+      content: "";
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after { width: 100%; }
+    .feature-card {
+      background: rgba(30,41,59,0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<nav class="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold gradient-text">Eneby Vision</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#accueil" class="nav-link text-slate-200 hover:text-white px-3 py-2">Accueil</a>
+                        <a href="index.html#services" class="nav-link text-slate-200 hover:text-white px-3 py-2">Services</a>
+                        <a href="index.html#portfolio" class="nav-link text-slate-200 hover:text-white px-3 py-2">Portfolio</a>
+                        <a href="index.html#contact" class="nav-link text-slate-200 hover:text-white px-3 py-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full h-px bg-slate-700 opacity-40"></div>
+</nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-16 px-4 pt-24">
+        <!-- Mentions Légales -->
+        <section id="mentions-legales" class="mb-16">
+            <h1 class="text-3xl font-semibold text-slate-100 mb-6">Mentions Légales</h1>
+            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+                <li><span class="font-medium text-slate-300">Éditeur du site :</span> Eneby Vision SAS, société par actions simplifiée au capital de 10 000 €</li>
+                <li><span class="font-medium text-slate-300">Siège social :</span> 123 Avenue des Champs, 75000 Paris, France</li>
+                <li><span class="font-medium text-slate-300">RCS :</span> Paris 123 456 789</li>
+                <li><span class="font-medium text-slate-300">TVA intracommunautaire :</span> FR 12 3456789</li>
+                <li><span class="font-medium text-slate-300">Directeur de publication :</span> Jean Dupont, Président</li>
+                <li><span class="font-medium text-slate-300">Hébergeur :</span> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France</li>
+            </ul>
+        </section>
+
+        <!-- Politique de confidentialité -->
+        <section id="politique-confidentialite" class="mb-16">
+            <h2 class="text-3xl font-semibold text-slate-100 mb-6">Politique de confidentialité</h2>
+            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+                <li>Eneby Vision s'engage à protéger vos données personnelles conformément au RGPD.</li>
+                <li>Les données collectées sont utilisées exclusivement pour répondre à vos demandes et améliorer nos services.</li>
+                <li>Nous ne partageons pas vos informations avec des tiers sans votre consentement explicite.</li>
+                <li>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données.</li>
+                <li>Nos mesures de sécurité incluent le chiffrement SSL et des protocoles stricts d'accès aux données.</li>
+                <li>Pour toute question concernant vos données, contactez notre DPO à dpo@enebyvision.com.</li>
+            </ul>
+        </section>
+
+        <!-- Conditions Générales de Vente -->
+        <section id="cgv" class="mb-16">
+            <h2 class="text-3xl font-semibold text-slate-100 mb-6">Conditions Générales de Vente</h2>
+            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+                <li>Les prestations sont facturées selon les tarifs en vigueur au moment de la commande.</li>
+                <li>Un acompte de 30% est requis pour le démarrage de tout projet.</li>
+                <li>Le solde est payable à la livraison du projet ou selon l'échéancier convenu.</li>
+                <li>Les délais de livraison sont donnés à titre indicatif et peuvent varier selon la complexité du projet.</li>
+                <li>En cas de retard de paiement, des pénalités de 1,5% par mois seront appliquées.</li>
+                <li>Le client dispose de 14 jours pour formuler des réserves après livraison.</li>
+            </ul>
+        </section>
+
+        <!-- Cookies -->
+        <section id="cookies">
+            <h2 class="text-3xl font-semibold text-slate-100 mb-6">Cookies</h2>
+            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+                <li>Ce site utilise des cookies essentiels au fonctionnement et des cookies analytiques.</li>
+                <li>Les cookies analytiques nous aident à améliorer l'expérience utilisateur (Google Analytics).</li>
+                <li>Vous pouvez désactiver les cookies non essentiels via les paramètres de votre navigateur.</li>
+                <li>Aucune donnée personnelle n'est collectée sans votre consentement.</li>
+                <li>Les cookies sont conservés pour une durée maximale de 13 mois.</li>
+                <li>En naviguant sur ce site, vous acceptez l'utilisation des cookies essentiels.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Desktop/footer complet -->
+    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Logo & Description -->
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Eneby Vision</h3>
+        <p class="text-sm text-slate-400">
+          Création de sites web intelligents combinant design élégant et technologies avancées.
+        </p>
+      </div>
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400 transition">Sites Vitrine</a></li>
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400 transition">Site Multi-Pages</a></li>
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400 transition">Site sur Mesure</a></li>
+        </ul>
+      </div>
+      <!-- Useful Links -->
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="#portfolio" class="text-sm text-slate-400 hover:text-blue-400 transition">Portfolio</a></li>
+          <li><a href="#process" class="text-sm text-slate-400 hover:text-blue-400 transition">Processus</a></li>
+          <li><a href="#contact" class="text-sm text-slate-400 hover:text-blue-400 transition">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Legal -->
+ <div>
+  <h3 class="text-lg font-semibold text-slate-200 mb-4">Légal</h3>
+  <ul class="space-y-2">
+    <li>
+      <a href="legal.html#mentions-legales"
+         class="text-sm text-slate-400 hover:text-blue-400 transition">
+        Mentions légales
+      </a>
+    </li>
+    <li>
+      <a href="legal.html#politique-confidentialite"
+         class="text-sm text-slate-400 hover:text-blue-400 transition">
+        Politique de confidentialité
+      </a>
+    </li>
+    <li>
+      <a href="legal.html#cgv"
+         class="text-sm text-slate-400 hover:text-blue-400 transition">
+        Conditions Générales de Vente
+      </a>
+    </li>
+    <li>
+      <a href="legal.html#cookies"
+         class="text-sm text-slate-400 hover:text-blue-400 transition">
+        Cookies
+      </a>
+    </li>
+  </ul>
+</div>
+    <!-- Footer mobile ultra-compact -->
+    <div class="md:hidden flex flex-col items-center justify-center text-center py-6 px-2">
+      <h3 class="text-lg font-semibold text-slate-200 mb-2">Eneby Vision</h3>
+      <p class="text-xs text-slate-400 mb-4 max-w-xs">Création de sites web intelligents.</p>
+      <div class="flex space-x-6 mb-2">
+        <a href="#" class="text-slate-500 hover:text-blue-400 transition text-xl" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="text-slate-500 hover:text-purple-400 transition text-xl" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <p class="text-[11px] text-slate-500 mt-2">© 2023 Eneby Vision</p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
