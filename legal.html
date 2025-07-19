@@ -79,42 +79,51 @@
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto py-16 px-4 pt-24 text-left">
-        <!-- Mentions Légales -->
-        <section id="mentions-legales" class="mb-16">
-            <h1 class="text-3xl font-semibold text-slate-100 mb-6">Mentions Légales</h1>
-            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
-                <li><span class="font-medium text-slate-300">Éditeur du site :</span> Eneby Vision SAS, société par actions simplifiée au capital de 10 000 €</li>
-                <li><span class="font-medium text-slate-300">Siège social :</span> 123 Avenue des Champs, 75000 Paris, France</li>
-                <li><span class="font-medium text-slate-300">RCS :</span> Paris 123 456 789</li>
-                <li><span class="font-medium text-slate-300">TVA intracommunautaire :</span> FR 12 3456789</li>
-                <li><span class="font-medium text-slate-300">Directeur de publication :</span> Jean Dupont, Président</li>
-                <li><span class="font-medium text-slate-300">Hébergeur :</span> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France</li>
-            </ul>
-        </section>
+<!-- Mentions Légales -->
+    <section id="mentions-legales" class="mb-16">
+      <h1 class="text-3xl font-semibold text-slate-100 mb-6">Mentions Légales</h1>
+      <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+        <li>
+          <span class="font-medium text-slate-300">Éditeurs du site :</span>
+          <ul class="list-disc list-inside ml-5 space-y-1">
+            <li>M. Emmanuel Lethiec – Auto-entrepreneur – SIRET 123 456 789 00012 – TVA non applicable (art. 293 B CGI) – Domicilié en France</li>
+            <li>Mme Dora Blanchard – Auto-entrepreneuse – SIRET 987 654 321 00034 – TVA non applicable (art. 293 B CGI) – Domiciliée en France</li>
+          </ul>
+        </li>
+        <li><span class="font-medium text-slate-300">Directeurs de la publication :</span> Emmanuel Lethiec et Dora Blanchard</li>
+        <li><span class="font-medium text-slate-300">Contact :</span> contact@enebyvision.com</li>
+        <li><span class="font-medium text-slate-300">Hébergeur :</span> OVH SAS – 2 rue Kellermann, 59100 Roubaix – Tél. 09 72 10 10 07</li>
+        <li><span class="font-medium text-slate-300">Propriété intellectuelle :</span>  
+            Tous droits réservés © 2025 Emmanuel Lethiec & Dora Blanchard.  
+            Reproduction interdite sans autorisation.
+        </li>
+        <li><span class="font-medium text-slate-300">Données personnelles :</span>  
+            Conformément au RGPD, voir notre <a href="#politique-confidentialite" class="text-blue-400 hover:underline">politique de confidentialité</a>.
+        </li>
+      </ul>
+    </section>
+
 
         <!-- Politique de confidentialité -->
         <section id="politique-confidentialite" class="mb-16">
-            <h2 class="text-3xl font-semibold text-slate-100 mb-6">Politique de confidentialité</h2>
-            <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
-                <li>Eneby Vision s'engage à protéger vos données personnelles conformément au RGPD.</li>
-                <li>Les données collectées sont utilisées exclusivement pour répondre à vos demandes et améliorer nos services.</li>
-                <li>Nous ne partageons pas vos informations avec des tiers sans votre consentement explicite.</li>
-                <li>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données.</li>
-                <li>Nos mesures de sécurité incluent le chiffrement SSL et des protocoles stricts d'accès aux données.</li>
-                <li>Pour toute question concernant vos données, contactez notre DPO à dpo@enebyvision.com.</li>
-            </ul>
-        </section>
+      <h2 class="text-3xl font-semibold text-slate-100 mb-6">Politique de confidentialité</h2>
+      <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
+        <li>Collecte minimale des données, utilisées uniquement pour traiter vos demandes.</li>
+        <li>Aucun partage des données sans consentement exprès.</li>
+        <li>Droits d’accès, de rectification et de suppression sur simple demande à dpo@enebyvision.com.</li>
+        <li>Mesures de sécurité : chiffrement SSL, accès restreint.</li>
+      </ul>
+    </section>
 
         <!-- Conditions Générales de Vente -->
         <section id="cgv" class="mb-16">
             <h2 class="text-3xl font-semibold text-slate-100 mb-6">Conditions Générales de Vente</h2>
             <ul class="list-disc list-inside text-sm text-slate-400 space-y-3">
-                <li>Les prestations sont facturées selon les tarifs en vigueur au moment de la commande.</li>
-                <li>Un acompte de 30% est requis pour le démarrage de tout projet.</li>
-                <li>Le solde est payable à la livraison du projet ou selon l'échéancier convenu.</li>
+                <li>Les prestations sont facturées selon les devis validés.</li>
+                <li>Un acompte de 50% est requis pour le démarrage de tout projet.</li>
+                <li>Le solde est payable selon l'échéancier convenu.</li>
                 <li>Les délais de livraison sont donnés à titre indicatif et peuvent varier selon la complexité du projet.</li>
-                <li>En cas de retard de paiement, des pénalités de 1,5% par mois seront appliquées.</li>
-                <li>Le client dispose de 14 jours pour formuler des réserves après livraison.</li>
+                <li>En cas de retard de paiement, des pénalités seront appliquées.</li>
             </ul>
         </section>
 
@@ -222,7 +231,7 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
+            s});
         });
     </script>
 </body>
