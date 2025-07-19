@@ -133,6 +133,71 @@
             transform: translateY(-2px);
         }
 
+        /* Centrage du texte de la hero section sur mobile */
+        @media (max-width: 767px) {
+            .hero-section .lg\:grid {
+                justify-content: center !important;
+            }
+            .hero-section .mt-12 {
+                text-align: center !important;
+                margin-top: 0 !important;
+            }
+            .hero-section h1,
+            .hero-section p,
+            .hero-section .flex {
+                text-align: center !important;
+                justify-content: center !important;
+            }
+            /* Fond noir + néons pour la hero section mobile */
+            .hero-animated-bg-mobile {
+                background: #0a0a0a !important;
+                position: absolute;
+                inset: 0;
+                width: 100vw;
+                height: 100%;
+                z-index: 0;
+                overflow: hidden;
+            }
+            .hero-animated-bg-mobile::before,
+            .hero-animated-bg-mobile::after {
+                content: "";
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(32px);
+                opacity: 0.7;
+                pointer-events: none;
+            }
+            .hero-animated-bg-mobile::before {
+                top: 10%;
+                left: 10%;
+                width: 120px;
+                height: 120px;
+                background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+                box-shadow: 0 0 60px 20px #3b82f6;
+            }
+            .hero-animated-bg-mobile::after {
+                bottom: 10%;
+                right: 10%;
+                width: 140px;
+                height: 140px;
+                background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+                box-shadow: 0 0 80px 30px #8b5cf6;
+            }
+            /* Ajout d'un néon central bleu/violet */
+            .hero-animated-bg-mobile .neon-center {
+                position: absolute;
+                left: 50%;
+                top: 60%;
+                transform: translate(-50%, -50%);
+                width: 180px;
+                height: 80px;
+                background: radial-gradient(circle, #3b82f6 0%, #8b5cf6 60%, transparent 100%);
+                filter: blur(40px);
+                opacity: 0.5;
+                z-index: 1;
+            }
+        }
+
         /* Carrousel responsive styles */
         @media (max-width: 768px) {
             /* Cache les icônes et le bloc d'illustration dans le carrousel */
@@ -293,7 +358,7 @@
 <section class="hero-section pt-24 pb-32 relative">
   <div class="absolute inset-0 w-full h-full z-0">
     <!-- Fond animé mobile -->
-    <div class="hero-animated-bg-mobile md:hidden"></div>
+    <div class="hero-animated-bg-mobile md:hidden"><div class="neon-center"></div></div>
     <!-- Overlay noir mobile -->
     <div class="hero-overlay-mobile" style="display:none;"></div>
 

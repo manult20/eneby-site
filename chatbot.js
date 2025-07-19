@@ -95,18 +95,43 @@
     }
     #eneby-userinput:focus { border-color: #8b5cf6; background: #181c38;}
     #eneby-input-bar button {
-      padding:0.62rem 0.9rem;
-      min-width: 44px;
-      max-width: 48px;
-      font-size: 1.1em;
-      border-radius: 50%;
+      min-width: 48px;
+      max-width: 52px;
       aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      box-shadow: 0 2px 12px #8b5cf680;
+      border: none;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      gap:0;
+      transition: box-shadow .16s, transform .13s, background .18s;
+      cursor: pointer;
+      font-size: 1.18em;
+      color: #fff;
+      outline: none;
+      margin-left: 0.2em;
+      padding: 0.62rem 0.9rem;
     }
     #eneby-input-bar button span { display:none; }
-    #eneby-input-bar button .eneby-plane { margin-left:0; }
+    #eneby-input-bar button .eneby-plane {
+      margin-left:0;
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      display: block;
+      transition: transform .18s;
+    }
+    #eneby-input-bar button:hover .eneby-plane {
+      transform: translateY(-2px) scale(1.12) rotate(-8deg);
+      filter: drop-shadow(0 0 6px #8b5cf6);
+    }
     #eneby-input-bar button:active { transform:scale(0.93); }
+    #eneby-input-bar button:hover, #eneby-input-bar button:focus {
+      box-shadow: 0 4px 18px #6366f1b0;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      transform: scale(1.07);
+    }
     #eneby-faq-bubbles {
       display:flex; flex-wrap:wrap; gap:0.3em; margin:8px 0 0 0;
       justify-content: flex-start;
