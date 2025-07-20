@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Découvrez nos réalisations chez Eneby Vision : une galerie de sites web conçus pour répondre aux besoins de nos clients. Explorez des exemples de plateformes de formation, salons de coiffure, services artisanaux, et plus encore.">
+  <meta name="keywords" content="Eneby Vision, galerie, sites web, plateformes de formation, salon de coiffure, artisan, menuisier, paysagiste">
+  <meta name="author" content="Eneby Vision">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -92,6 +95,53 @@
     .nav-link:hover:after {
         width: 100%;
     }
+
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 3s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 100vh;
+      }
+      .hero-section img {
+        object-position: right;
+      }
+      .hero-section h1 {
+        font-size: 2.5rem; /* Augmente la taille du titre */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Renforce le contraste */
+      }
+      .hero-section p {
+        font-size: 1.125rem; /* Augmente la taille du paragraphe */
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Renforce le contraste */
+      }
+    }
+
+    @media (min-width: 768px) {
+      .arrow-down {
+        display: flex !important; /* Rendre la flèche visible sur desktop */
+        bottom: 16px; /* Ajuste la position verticale */
+        left: 50%; /* Centre horizontalement */
+        transform: translateX(-50%); /* Corrige le centrage */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-section {
+        min-height: 100vh;
+      }
+    }
+
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -141,19 +191,25 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="relative bg-slate-900 overflow-hidden pt-32 pb-20 text-center">
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 opacity-20 animate-gradient"></div>
-      <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-      
+    <section class="relative bg-slate-900 overflow-hidden pt-32 pb-20 text-center hero-section">
+      <div class="absolute inset-0 z-0">
+        <img src="./images/testfond.svg" alt="Décoration SVG" class="w-full h-full object-cover opacity-50">
+      </div>
       <div class="relative z-10 max-w-4xl mx-auto px-6">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">Découvrez nos réalisations</h1>
-        <p class="text-lg sm:text-xl text-slate-300 mb-10">Explorez une sélection de sites que nous avons conçus pour aider nos clients à atteindre leurs objectifs.</p>
-        <a href="#gallery" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-transform transform hover:scale-105">Voir nos exemples</a>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">Découvrez nos réalisations</h1>
+        <p class="text-lg sm:text-xl text-slate-300 mb-10 drop-shadow-md">Explorez une sélection de sites que nous avons conçus pour aider nos clients à atteindre leurs objectifs.</p>
+        <a href="#gallery" class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-transform transform hover:scale-110">Voir nos exemples</a>
+      </div>
+
+      <!-- Arrow down to gallery -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+        <a href="#gallery" class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600 transition-transform transform hover:scale-110 arrow-down">
+          <i class="fas fa-chevron-down text-xl"></i>
+        </a>
       </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section --> 
     <section id="gallery" class="py-20 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -176,11 +232,89 @@
     <iframe id="viewerFrame" title="Site Preview"></iframe>
   </div>
 
+  <!-- ====== FOOTER ====== -->
+<footer class="bg-slate-900 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Version desktop (écran ≥ md) -->
+    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Eneby Vision</h3>
+        <p class="text-sm text-slate-400">
+          Création de sites web intelligents combinant design élégant et tech avancées.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400">Sites Vitrine</a></li>
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400">Multi-Pages</a></li>
+          <li><a href="#services" class="text-sm text-slate-400 hover:text-blue-400">Sur Mesure</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="#portfolio" class="text-sm text-slate-400 hover:text-blue-400">Portfolio</a></li>
+          <li><a href="#process" class="text-sm text-slate-400 hover:text-blue-400">Processus</a></li>
+          <li><a href="#contact" class="text-sm text-slate-400 hover:text-blue-400">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-slate-200 mb-4">Légal</h3>
+        <ul class="space-y-2">
+          <li><a href="legal.html#mentions-legales" class="text-sm text-slate-400 hover:text-blue-400">Mentions légales</a></li>
+          <li><a href="legal.html#politique-confidentialite" class="text-sm text-slate-400 hover:text-blue-400">Confidentialité</a></li>
+          <li><a href="legal.html#cgv" class="text-sm text-slate-400 hover:text-blue-400">CGV</a></li>
+          <li><a href="legal.html#cookies" class="text-sm text-slate-400 hover:text-blue-400">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Version mobile (écran < md) -->
+    <div class="md:hidden flex flex-col items-center justify-center text-center py-6 px-2">
+      <h3 class="text-lg font-semibold text-slate-200 mb-2">Eneby Vision</h3>
+      <p class="text-xs text-slate-400 mb-4 max-w-xs">Création de sites web intelligents.</p>
+      <div class="flex space-x-6 mb-2">
+        <a href="#" class="text-slate-500 hover:text-blue-400 text-xl" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+       <div class="flex flex-wrap justify-center gap-2 text-[10px]">
+    <a href="legal.html#mentions-legales"
+       class="text-slate-400 hover:text-blue-400 underline">
+       Mentions légales
+    </a>
+    <span class="text-slate-500">•</span>
+    <a href="legal.html#politique-confidentialite"
+       class="text-slate-400 hover:text-blue-400 underline">
+       Politique de confidentialité
+    </a>
+    <span class="text-slate-500">•</span>
+    <a href="legal.html#cgv"
+       class="text-slate-400 hover:text-blue-400 underline">
+       CGV
+    </a>
+    <span class="text-slate-500">•</span>
+    <a href="legal.html#cookies"
+       class="text-slate-400 hover:text-blue-400 underline">
+       Cookies
+    </a>
+  </div>
+      <p class="text-[11px] text-slate-500 mt-2">© Eneby Vision</p>
+    </div>
+
+  </div>
+</footer>
+<!-- ====== FIN FOOTER ====== -->
+
   <script>
     const sites = [
-      { url: "./site-example/formapro.html", title: "Plateforme de formation en ligne", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Formation+Pro" },
-      { url: "./site-example/coiffure.html", title: "Salon de coiffure moderne", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Coiffure" },
-      { url: "./site-example/artisan.html", title: "Artisan Services Pro", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Artisan+Pro" }
+      { url: "./site-example/formapro.html", title: "Formation", img: "./images/formapro.jpg" },
+      { url: "./site-example/coiffure.html", title: "Coiffure", img: "./images/coiffeur.jpg" },
+      { url: "./site-example/artisan.html", title: "Artisan", img: "./images/artisan.jpg" },
+      { url: "./site-example/menuisier.html", title: "Menuisier", img: "./images/menuisier.jpg" },
+      { url: "./site-example/paysagiste.html", title: "Paysagiste", img: "./images/paysagiste.jpg" }
     ];
 
     let currentIndex = 0;
@@ -195,7 +329,7 @@
         card.className = 'gallery-card bg-slate-800 rounded-lg overflow-hidden cursor-pointer group';
         card.innerHTML = `
             <div class="relative h-48 overflow-hidden">
-                <img src="${site.img}" alt="${site.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <img src="${site.img}" alt="${site.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                 <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
             </div>
             <div class="p-6">
