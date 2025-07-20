@@ -133,71 +133,8 @@
             transform: translateY(-2px);
         }
 
-        /* Centrage du texte de la hero section sur mobile */
-        @media (max-width: 767px) {
-            .hero-section .lg\:grid {
-                justify-content: center !important;
-            }
-            .hero-section .mt-12 {
-                text-align: center !important;
-                margin-top: 0 !important;
-            }
-            .hero-section h1,
-            .hero-section p,
-            .hero-section .flex {
-                text-align: center !important;
-                justify-content: center !important;
-            }
-            /* Fond noir + néons pour la hero section mobile */
-            .hero-animated-bg-mobile {
-                background: #0a0a0a !important;
-                position: absolute;
-                inset: 0;
-                width: 100vw;
-                height: 100%;
-                z-index: 0;
-                overflow: hidden;
-            }
-            .hero-animated-bg-mobile::before,
-            .hero-animated-bg-mobile::after {
-                content: "";
-                position: absolute;
-                border-radius: 50%;
-                filter: blur(32px);
-                opacity: 0.7;
-                pointer-events: none;
-            }
-            .hero-animated-bg-mobile::before {
-                top: 10%;
-                left: 10%;
-                width: 120px;
-                height: 120px;
-                background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
-                box-shadow: 0 0 60px 20px #3b82f6;
-            }
-            .hero-animated-bg-mobile::after {
-                bottom: 10%;
-                right: 10%;
-                width: 140px;
-                height: 140px;
-                background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
-                box-shadow: 0 0 80px 30px #8b5cf6;
-            }
-            /* Ajout d'un néon central bleu/violet */
-            .hero-animated-bg-mobile .neon-center {
-                position: absolute;
-                left: 50%;
-                top: 60%;
-                transform: translate(-50%, -50%);
-                width: 180px;
-                height: 80px;
-                background: radial-gradient(circle, #3b82f6 0%, #8b5cf6 60%, transparent 100%);
-                filter: blur(40px);
-                opacity: 0.5;
-                z-index: 1;
-            }
-        }
-
+        
+ 
         /* Carrousel responsive styles */
         @media (max-width: 768px) {
             /* Cache les icônes et le bloc d'illustration dans le carrousel */
@@ -254,58 +191,8 @@
             footer { padding-top: 0 !important; padding-bottom: 0 !important; }
             footer .flex.flex-col.items-center.justify-center.text-center { padding-top: 12px !important; padding-bottom: 12px !important; }
         }
-        /* Hero section mobile: padding réduit et overlay noir */
-        @media (max-width: 767px) {
-            .hero-section {
-                padding-top: 60px !important;
-                padding-bottom: 32px !important;
-            }
-            .hero-section .hero-overlay-mobile {
-                display: block;
-            }
-            .hero-section .hero-img-mobile {
-                position: relative;
-                z-index: 0;
-            }
-            .hero-section .hero-overlay-mobile {
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(180deg,rgba(0,0,0,0.45) 60%,rgba(0,0,0,0.7) 100%);
-                z-index: 1;
-                pointer-events: none;
-            }
-            .hero-section .max-w-7xl {
-                padding-top: 40px !important;
-                padding-bottom: 24px !important;
-            }
-        }
-        @media (min-width: 768px) {
-            .hero-section .hero-overlay-mobile {
-                display: none !important;
-            }
-        }
 
-        /* Fond animé mobile pour la hero section */
-        @media (max-width: 767px) {
-            .hero-animated-bg-mobile {
-                position: absolute;
-                inset: 0;
-                width: 100vw;
-                height: 100%;
-                z-index: 0;
-                background: linear-gradient(120deg, #1e293b 0%, #3b82f6 50%, #8b5cf6 100%);
-                animation: hero-bg-gradient-move 8s ease-in-out infinite alternate;
-                overflow: hidden;
-            }
-            @keyframes hero-bg-gradient-move {
-                0% {
-                    background-position: 0% 50%;
-                }
-                100% {
-                    background-position: 100% 50%;
-                }
-            }
-        }
+
 
         #contact {
             margin-top: 50px; /* Ajout d'une marge supplémentaire pour éloigner davantage les sections */
@@ -362,44 +249,77 @@
         </div>
     </nav>
 
-   <!-- Hero Section -->
-<section class="hero-section pt-24 pb-32 relative">
-  <div class="absolute inset-0 w-full h-full z-0">
-    <!-- Fond animé mobile -->
-    <div class="hero-animated-bg-mobile md:hidden"><div class="neon-center"></div></div>
-    <!-- Overlay noir mobile -->
-    <div class="hero-overlay-mobile" style="display:none;"></div>
+  <!-- HERO SECTION -->
+<section
+  class="hero-section relative min-h-screen bg-cover bg-center md:bg-none
+         pt-20 pb-16 sm:pt-24 sm:pb-20 md:pt-28 md:pb-32"
+  style="background-image:url('./images/bghero.svg');"
+>
+  <!-- BACKGROUND LAYER -->
+  <div class="absolute inset-0 z-0">
+    <!-- Mobile animated gradient -->
+    <div class="hero-animated-bg-mobile md:hidden">
+      <div class="neon-center"></div>
+    </div>
 
-    <!-- Vidéo affichée sur tablette+ (≥768px) -->
+    <!-- Mobile dark overlay -->
+    <div class="hero-overlay-mobile md:hidden absolute inset-0 bg-black/60"></div>
+
+    <!-- Video (>= md) -->
     <video
       src="/video/hero.mp4"
-      autoplay
-      loop
-      muted
-      playsinline
+      autoplay loop muted playsinline
       class="hidden md:block w-full h-full object-cover"
     ></video>
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative z-20">
-    <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-      <div class="mt-12 lg:mt-0">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          <span class="gradient-text">Création de site internet pour PME</span> 
+  <!-- CONTENT -->
+  <div class="relative z-20 max-w-7xl mx-auto h-full flex items-center px-4 sm:px-6 lg:px-10">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-24 w-full">
+      <div class="text-center lg:text-left mx-auto lg:mx-0 mt-10 sm:mt-16">
+        <!-- TITLE -->
+        <h1
+          class="font-bold leading-tight mb-6 sm:mb-8
+                 text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          <span class="text-white md:gradient-text">
+            Création de site internet&nbsp;pour&nbsp;PME
+          </span>
         </h1>
-        <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-lg">
-          Eneby Vision réalise votre site vitrine professionnel, optimisé SEO et facile à gérer. Boostez votre visibilité simplement !
+
+        <!-- SUB TITLE -->
+        <p
+          class="text-slate-300 mx-auto lg:mx-0
+                 text-base xs:text-lg sm:text-xl
+                 max-w-md sm:max-w-lg mb-10 sm:mb-12"
+        >
+          Eneby Vision réalise votre site vitrine professionnel, optimisé SEO et
+          facile à gérer. Boostez votre visibilité simplement !
         </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="btn-primary text-white px-8 py-3 rounded-full font-medium">Démarrer un projet</a>
-          <a href="#services" class="btn-secondary text-blue-400 px-8 py-3 rounded-full font-medium">Nos services</a>
+
+        <!-- CTA BUTTONS -->
+        <div
+          class="flex flex-col sm:flex-row gap-4 sm:gap-6
+                 justify-center lg:justify-start"
+        >
+          <a
+            href="#contact"
+            class="btn-primary text-white font-medium rounded-full px-8 py-3
+                   text-base sm:text-lg"
+          >
+            Démarrer un projet
+          </a>
+          <a
+            href="#services"
+            class="btn-secondary text-blue-400 font-medium rounded-full px-8 py-3
+                   text-base sm:text-lg"
+          >
+            Nos services
+          </a>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Overlay noir semi-transparent pour mobile -->
-  <div class="hero-overlay-mobile" style="display: none;"></div>
 </section>
     <!-- Nos Forces Section -->
     <section class="py-20 bg-gradient-to-b from-black via-[#0f172a] to-slate-800/50">
