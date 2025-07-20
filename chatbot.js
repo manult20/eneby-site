@@ -132,31 +132,11 @@
       background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
       transform: scale(1.07);
     }
-    #eneby-faq-bubbles {
-      display:flex; flex-wrap:wrap; gap:0.3em; margin:8px 0 0 0;
-      justify-content: flex-start;
-    }
-    .eneby-faq-bubble {
-      font-size:0.97em; min-width:unset; max-width: 48vw;
-      padding:6px 13px; border-radius:13px;
-      margin:2px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    }
     @media (max-width:700px) {
       #eneby-chatbox { width: 98vw; right:1vw; left:1vw; min-width:0; height: 97vw; min-height:320px; }
-      .eneby-faq-bubble { font-size:0.95em; max-width: 70vw; padding:5px 10px; }
     }
     #eneby-messages::-webkit-scrollbar {width:6px;}
     #eneby-messages::-webkit-scrollbar-thumb {background:#6366f1; border-radius:4px;}
-    #eneby-faq-bubbles {
-      display:flex; flex-wrap:wrap; gap:0.5em; margin:10px 0 0 0;
-    }
-    .eneby-faq-bubble {
-      background:linear-gradient(90deg,#3b82f6,#8b5cf6);color:#fff;
-      padding:8px 18px;border-radius:16px;border:none;margin:2px 0;cursor:pointer;
-      font-size:1em; box-shadow:0 1px 7px #6366f14a;transition:.14s;
-      outline:none;
-    }
-    .eneby-faq-bubble:hover { background:linear-gradient(90deg,#6366f1,#3b82f6);}
     .eneby-msg-bot.pulse {
       animation: eneby-pulse 1.2s 1;
     }
@@ -193,8 +173,8 @@
             <circle cx="20" cy="20" r="18" fill="none"/>
             <path d="M20 10c-6.5 0-11.5 4-11.5 9 0 2.4 1.3 4.7 3.5 6.3-.1.9-.7 2.6-1.1 3.6-.1.3.2.6.5.4 1.5-.7 3.2-1.5 3.9-1.9C17.1 28.1 18.5 28.5 20 28.5c6.5 0 11.5-4 11.5-9S26.5 10 20 10z" fill="#fff"/>
             <circle cx="16" cy="19" r="1.1" fill="#8b5cf6"/>
-            <circle cx="20" cy="19" r="1.1" fill="#8b5cf6"/>
-            <circle cx="24" cy="19" r="1.1" fill="#8b5cf6"/>
+            <circle cx="20" cx="19" r="1.1" fill="#8b5cf6"/>
+            <circle cx="24" cx="19" r="1.1" fill="#8b5cf6"/>
           </svg>
           Eneby Chat
         </span>
@@ -207,7 +187,6 @@
           <span style="color:#a5b4fc;">Exemples : horaires, contact, rendez-vous, tarifs…</span>
         </div>
       </div>
-      <div id="eneby-faq-bubbles"></div>
       <form id="eneby-input-bar" autocomplete="off">
         <input type="text" id="eneby-userinput" placeholder="Votre question…" autocomplete="off" />
         <button type="submit"><svg class="eneby-plane" viewBox="0 0 20 20"><path d="M2 10l15-6-6 15-2-6-6-2z"/></svg></button>
@@ -223,18 +202,17 @@
   const messages = document.getElementById('eneby-messages');
   const form = document.getElementById('eneby-input-bar');
   const input = document.getElementById('eneby-userinput');
-  const bubblesBox = document.getElementById('eneby-faq-bubbles');
 
   // --- Affichage & ouverture/fermeture
   bubble.onclick = () => {
     chatbox.classList.remove('hide');
     chatbox.style.display = 'flex';
     bubble.style.display = 'none';
-    setTimeout(()=>input.focus(), 120);
+    setTimeout(() => input.focus(), 120);
   }
   close.onclick = () => {
     chatbox.classList.add('hide');
-    setTimeout(()=>{
+    setTimeout(() => {
       chatbox.style.display = 'none';
       bubble.style.display = 'flex';
     }, 300);
@@ -249,7 +227,7 @@
     },
     {
       questions: ["téléphone", "appel", "numéro", "joindre", "contacter", "appeler"],
-      answer: "📞 Appelez-nous au <b>01 23 45 67 89</b>.<br>Vous pouvez aussi nous écrire un mail.",
+      answer: "📞 Appelez-nous au <b>07 82 06 76 35</b>.<br>Vous pouvez aussi nous écrire un mail.",
       suggest: ["Horaires", "Adresse", "Mail"]
     },
     {
@@ -259,7 +237,7 @@
     },
     {
       questions: ["mail", "email", "courriel", "écrire"],
-      answer: "📧 Notre email : <b>contact@nab.fr</b>.<br>Nous répondons rapidement.",
+      answer: "📧 Notre email : <b>contact@enebyvision.com</b>.<br>Nous répondons rapidement.",
       suggest: ["Téléphone", "Adresse", "Rendez-vous"]
     },
     {
@@ -403,22 +381,19 @@
     setTimeout(()=>btn.classList.remove('sending'), 420);
     addMsg(val, "user");
     input.value = "";
-    resetSuggestTimeout();
-    setTimeout(()=>{
+    setTimeout(() => {
       let found = false;
       const question = val.toLowerCase();
       for (const faq of FAQ) {
         if (faq.questions.some(q => question.includes(q))) {
           addMsg(faq.answer, "bot", true);
-          showSuggestions(faq.suggest);
-          found = true; break;
+          found = true;
+          break;
         }
       }
       if (!found) {
         addMsg("🤖 Je n’ai pas compris… Essayez d’autres mots-clés, ou contactez-nous !", "bot", true);
-        showSuggestions(defaultSuggestions);
       }
-      resetSuggestTimeout();
     }, 380);
   };
 
@@ -431,11 +406,11 @@
     chatbox.classList.remove('hide');
     chatbox.style.display = 'flex';
     bubble.style.display = 'none';
-    setTimeout(()=>input.focus(), 120);
+    setTimeout(() => input.focus(), 120);
   }
   close.onclick = () => {
     chatbox.classList.add('hide');
-    setTimeout(()=>{ chatbox.style.display = 'none'; bubble.style.display = 'flex'; }, 300);
+    setTimeout(() => { chatbox.style.display = 'none'; bubble.style.display = 'flex'; }, 300);
   }
 
   // --- Message de bienvenue plus vivant

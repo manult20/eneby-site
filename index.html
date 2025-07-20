@@ -306,6 +306,14 @@
                 }
             }
         }
+
+        #contact {
+            margin-top: 50px; /* Ajout d'une marge supplémentaire pour éloigner davantage les sections */
+        }
+
+        #process {
+            margin-bottom: 100px; /* Ajout d'une marge plus grande pour éloigner la section Processus de la section Contact */
+        }
     </style>
     
 </head>
@@ -1013,9 +1021,6 @@
                         Expert en création de site web, Emmanuel supervise chaque projet pour garantir qualité et performance.
                     </p>
                     <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-blue-400">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
                         <a href="#contact" class="text-slate-400 hover:text-blue-400">
                             <i class="fas fa-envelope"></i>
                         </a>
@@ -1031,14 +1036,9 @@
                     <p class="text-slate-400 mb-6">
                         Dora crée pour chaque projet une identité visuelle unique, moderne et adaptée à votre image.
                     </p>
-                    <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-slate-400 hover:text-purple-400">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                    <div class="flex justify-center space-x-4">                     
                         <a href="#contact" class="text-slate-400 hover:text-purple-400">
                             <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
                         </a>
                     </div>
                 </div>
@@ -1047,7 +1047,7 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="py-24 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative">
+    <section id="process" class="pt-24 pb-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative">
         <div class="absolute inset-0 pointer-events-none">
             <div class="w-96 h-96 bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-transparent rounded-full blur-3xl absolute -top-32 -left-32"></div>
             <div class="w-96 h-96 bg-gradient-to-br from-indigo-600/20 via-blue-600/10 to-transparent rounded-full blur-3xl absolute -bottom-32 -right-32"></div>
@@ -1113,13 +1113,13 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-<section id="contact" class="py-16 sm:py-20 bg-gradient-to-b from-slate-900 to-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- Contact Section -->
+    <section id="contact" class="pt-0 pb-16 sm:pb-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-center">
 
-      <!-- Texte + infos -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left mb-10 md:mb-0">
+        <!-- Texte + infos -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left mb-10 md:mb-0">
         <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6">
           Prêt à démarrer votre projet ?
         </h2>
@@ -1131,125 +1131,112 @@
         <!-- Icônes mobiles / détails desktop -->
         <div class="w-full">
           <!-- mobile: icône + texte pour chaque coordonnée -->
-<div class="flex flex-col items-center space-y-4 mb-6 md:hidden">
-  <!-- Email -->
-  <div class="flex items-center space-x-3">
-    <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center">
-      <i class="fas fa-envelope text-blue-400"></i>
+    <div class="flex flex-col items-center space-y-4 mb-6 md:hidden">
+      <!-- Email -->
+      <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center">
+        <i class="fas fa-envelope text-blue-400"></i>
+      </div>
+      <a href="mailto:contact@enebyvision.com"
+         class="text-base text-slate-400 hover:text-blue-400">
+        contact@enebyvision.com
+      </a>
+      </div>
+      <!-- Téléphone -->
+      <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center">
+        <i class="fas fa-phone-alt text-purple-400"></i>
+      </div>
+      <a href="tel:+33782067635"
+         class="text-base text-slate-400 hover:text-purple-400">
+        +33 7 82 06 76 35
+      </a>
+      </div>
     </div>
-    <a href="mailto:contact@enebyvision.com"
-       class="text-base text-slate-400 hover:text-blue-400">
-      contact@enebyvision.com
-    </a>
-  </div>
-  <!-- Téléphone -->
-  <div class="flex items-center space-x-3">
-    <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center">
-      <i class="fas fa-phone-alt text-purple-400"></i>
-    </div>
-    <a href="tel:+33782067635"
-       class="text-base text-slate-400 hover:text-purple-400">
-      +33 7 82 06 76 35
-    </a>
-  </div>
-</div>
 
           <!-- tablette+ : détails groupés -->
           <div class="hidden md:grid grid-cols-1 space-y-6 w-full max-w-xs">
-            <div class="flex items-start">
-              <div class="flex-shrink-0">
-                <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center">
-                  <i class="fas fa-envelope text-blue-400"></i>
-                </div>
-              </div>
-              <div class="ml-4 text-left">
-                <h3 class="text-sm font-semibold text-slate-300 mb-1">Email</h3>
-                <p class="text-sm text-slate-400">contact@enebyvision.com</p>
-              </div>
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+            <div class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center">
+              <i class="fas fa-envelope text-blue-400"></i>
             </div>
-            <div class="flex items-start">
-              <div class="flex-shrink-0">
-                <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center">
-                  <i class="fas fa-phone-alt text-purple-400"></i>
-                </div>
-              </div>
-              <div class="ml-4 text-left">
-                <h3 class="text-sm font-semibold text-slate-300 mb-1">Téléphone</h3>
-                <p class="text-sm text-slate-400">+33 7 82 06 76 35</p>
-              </div>
+            </div>
+            <div class="ml-4 text-left">
+            <h3 class="text-sm font-semibold text-slate-300 mb-1">Email</h3>
+            <p class="text-sm text-slate-400">contact@enebyvision.com</p>
             </div>
           </div>
-        </div>
-
-        <!-- Réseaux sociaux -->
-        <div class="mt-8 w-full max-w-xs">
-          <h3 class="text-sm font-semibold text-slate-300 mb-3">Suivez-nous</h3>
-          <div class="flex justify-center md:justify-start space-x-4">
-            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600">
-              <i class="fab fa-linkedin-in text-slate-300"></i>
-            </a>
-            <!-- ajoute ici d'autres icônes si besoin -->
+          <div class="flex items-start">
+            <div class="flex-shrink-0">
+            <div class="w-10 h-10 rounded-full bg-purple-900/30 flex items-center justify-center">
+              <i class="fas fa-phone-alt text-purple-400"></i>
+            </div>
+            </div>
+            <div class="ml-4 text-left">
+            <h3 class="text-sm font-semibold text-slate-300 mb-1">Téléphone</h3>
+            <p class="text-sm text-slate-400">+33 7 82 06 76 35</p>
+            </div>
+          </div>
           </div>
         </div>
-      </div>
+        </div>
 
       <!-- Formulaire -->
-      <div class="bg-slate-900/50 rounded-xl p-6 sm:p-8 border border-slate-800">
-        <form class="space-y-4">
-          <div>
-            <label for="name" class="block text-xs font-medium text-slate-300 mb-1">Nom complet</label>
-            <input type="text" id="name"
-              class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Votre nom">
-          </div>
-          <div>
-            <label for="email" class="block text-xs font-medium text-slate-300 mb-1">
-              Email <span class="text-red-500">*</span>
-            </label>
-            <input type="email" id="email" required
-              class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="votre@email.com">
-          </div>
-          <div>
-            <label for="phone" class="block text-xs font-medium text-slate-300 mb-1">
-              Téléphone <span class="text-red-500">*</span>
-            </label>
-            <input type="tel" id="phone" required
-              class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="+33 6 12 34 56 78">
-          </div>
-          <div>
-            <label for="project" class="block text-xs font-medium text-slate-300 mb-1">
-              Type de projet
-            </label>
-            <select id="project"
-              class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Sélectionnez une option</option>
-              <option>Site Vitrine</option>
-              <option>Site Multi-Pages</option>
-              <option>Solution IA</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div>
-            <label for="message" class="block text-xs font-medium text-slate-300 mb-1">
-              Message
-            </label>
-            <textarea id="message" rows="3"
-              class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Décrivez votre projet..."></textarea>
-          </div>
-          <button type="submit"
-            class="btn-primary w-full py-2 rounded font-medium text-sm flex items-center justify-center">
-            Envoyer <i class="fas fa-paper-plane ml-2"></i>
-          </button>
-        </form>
-      </div>
+<form class="space-y-4" action="contact.php" method="POST">
+    <div>
+        <label for="name" class="block text-xs font-medium text-slate-300 mb-1">Nom complet</label>
+        <input type="text" id="name" name="name" required
+            class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Votre nom">
+    </div>
+    <div>
+        <label for="email" class="block text-xs font-medium text-slate-300 mb-1">
+            Email <span class="text-red-500">*</span>
+        </label>
+        <input type="email" id="email" name="email" required
+            class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="votre@email.com">
+    </div>
+    <div>
+        <label for="phone" class="block text-xs font-medium text-slate-300 mb-1">
+            Téléphone <span class="text-red-500">*</span>
+        </label>
+        <input type="tel" id="phone" name="phone" required
+            class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="+33 6 12 34 56 78">
+    </div>
+    <div>
+        <label for="project" class="block text-xs font-medium text-slate-300 mb-1">
+            Type de projet
+        </label>
+        <select id="project" name="project"
+            class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option>Sélectionnez une option</option>
+            <option>Site Vitrine</option>
+            <option>Site Multi-Pages</option>
+            <option>Solution IA</option>
+            <option>Autre</option>
+        </select>
+    </div>
+    <div>
+        <label for="message" class="block text-xs font-medium text-slate-300 mb-1">
+            Message
+        </label>
+        <textarea id="message" name="message" rows="3"
+            class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded text-slate-200 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Décrivez votre projet..."></textarea>
+    </div>
+    <button type="submit"
+        class="btn-primary w-full py-2 rounded font-medium text-sm flex items-center justify-center">
+        Envoyer <i class="fas fa-paper-plane ml-2"></i>
+    </button>
+</form>
 
     </div>
   </div>
