@@ -133,7 +133,20 @@
       transform: scale(1.07);
     }
     @media (max-width:700px) {
-      #eneby-chatbox { width: 98vw; right:1vw; left:1vw; min-width:0; height: 97vw; min-height:320px; }
+      #eneby-bubble {
+        display: flex;
+      }
+      #eneby-chatbox {
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0;
+        min-width: 0;
+        min-height: 0;
+      }
     }
     #eneby-messages::-webkit-scrollbar {width:6px;}
     #eneby-messages::-webkit-scrollbar-thumb {background:#6366f1; border-radius:4px;}
@@ -222,7 +235,7 @@
   const FAQ = [
     {
       questions: ["horaire", "heures", "ouvert", "fermé", "ouverture", "fermeture", "quand", "planning"],
-      answer: "🕒 Nos horaires sont du lundi au vendredi de 9h à 18h.<br>Besoin d’un rendez-vous en dehors ? Contactez-nous !",
+      answer: "🕒 Nous sommes comme des super-héros : toujours là quand vous avez besoin de nous ! Contactez-nous pour fixer un rendez-vous.",
       suggest: ["Téléphone", "Adresse", "Prendre rendez-vous"]
     },
     {
@@ -232,7 +245,7 @@
     },
     {
       questions: ["adresse", "où", "localisation", "situé", "trouver", "venir", "plan"],
-      answer: "📍 Nous sommes situés au <b>10 rue des Artisans, 75000 Paris</b>.",
+      answer: "📍 Nous sommes situés en France",
       suggest: ["Téléphone", "Horaires", "Parking"]
     },
     {
@@ -247,7 +260,7 @@
     },
     {
       questions: ["service", "prestations", "proposez", "quoi", "activité", "offres", "domaines"],
-      answer: "🛠️ Voici nos services principaux :<ul style='margin:5px 0 0 1em; color:#a5b4fc;'><li>• Installation</li><li>• Conseil</li><li>• Maintenance</li></ul>Demandez-nous pour plus de détails !",
+      answer: "🛠️ Voici nos services principaux :<ul style='margin:5px 0 0 1em; color:#a5b4fc;'><li>• Création</li><li>• Conseil</li><li>• Maintenance</li></ul>Demandez-nous pour plus de détails !",
       suggest: ["Tarifs", "Prendre rendez-vous", "Horaires"]
     },
     {
