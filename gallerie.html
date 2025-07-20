@@ -310,11 +310,11 @@
 
   <script>
     const sites = [
-      { url: "./site-example/formapro.html", title: "Formation", img: "./images/formapro.jpg" },
-      { url: "./site-example/coiffure.html", title: "Coiffure", img: "./images/coiffeur.jpg" },
-      { url: "./site-example/artisan.html", title: "Artisan", img: "./images/artisan.jpg" },
-      { url: "./site-example/menuisier.html", title: "Menuisier", img: "./images/menuisier.jpg" },
-      { url: "./site-example/paysagiste.html", title: "Paysagiste", img: "../images/bush-972972_1280.jpg" }
+      { url: "./site-example/formapro.html", title: "Formation", img: "../images/Formation (1).png" },
+      { url: "./site-example/coiffure.html", title: "Coiffure", img: "../images/Coiffeuse.png" },
+      { url: "./site-example/artisan.html", title: "Artisan", img: "../images/Artisan.png" },
+      { url: "./site-example/menuisier.html", title: "Menuisier", img: "../images/Menuisier.png" },
+      { url: "./site-example/paysagiste.html", title: "Paysagiste", img: "../images/Paysagiste.png" }
     ];
 
     let currentIndex = 0;
@@ -326,19 +326,36 @@
     // Populate gallery
     sites.forEach((site, index) => {
         const card = document.createElement('div');
-        card.className = 'gallery-card bg-slate-800 rounded-lg overflow-hidden cursor-pointer group';
+        card.className = 'gallery-card bg-slate-800 rounded-lg overflow-hidden cursor-pointer group shadow-lg';
         card.innerHTML = `
-            <div class="relative h-48 overflow-hidden">
-                <img src="${site.img}" alt="${site.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+            <div class="relative h-48 flex items-center justify-center bg-gradient-to-br from-blue-900/30 to-purple-900/30 group-hover:from-blue-500/50 group-hover:to-purple-500/50 transition-all duration-300">
+                <i class="fas fa-${getIconForSite(site.title)} text-6xl text-blue-400 group-hover:text-purple-400 neon-effect"></i>
             </div>
-            <div class="p-6">
+            <div class="p-6 flex flex-col items-center justify-center text-center">
                 <h3 class="text-xl font-semibold text-white">${site.title}</h3>
             </div>
+            <div class="h-1 w-full bg-gradient-to-r from-blue-500 to-purple-500 group-hover:from-purple-500 group-hover:to-blue-500 transition-all duration-300"></div>
         `;
         card.addEventListener('click', () => showSite(index));
         galleryGrid.appendChild(card);
     });
+
+    function getIconForSite(title) {
+        switch (title.toLowerCase()) {
+            case 'formation':
+                return 'graduation-cap';
+            case 'coiffure':
+                return 'cut';
+            case 'artisan':
+                return 'tools';
+            case 'menuisier':
+                return 'hammer';
+            case 'paysagiste':
+                return 'leaf';
+            default:
+                return 'globe';
+        }
+    }
 
     function showSite(index) {
       currentIndex = (index + sites.length) % sites.length;
