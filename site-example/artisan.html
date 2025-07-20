@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Services Pro - Artisan de confiance près de chez vous</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0f172a',
+                        accent: '#f59e0b'
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .testimonial-slide {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .sticky-contact {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .before-after-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Sticky contact button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="sticky-contact bg-primary text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-primary text-white p-2 rounded-lg mr-3">
+                    <i class="fas fa-tools text-2xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-secondary">Artisan <span class="text-primary">Services Pro</span></h1>
+            </div>
+            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#services" class="text-gray-600 hover:text-primary font-medium">Services</a></li>
+                    <li><a href="#gallery" class="text-gray-600 hover:text-primary font-medium">Réalisations</a></li>
+                    <li><a href="#why-us" class="text-gray-600 hover:text-primary font-medium">Pourquoi nous</a></li>
+                    <li><a href="#pricing" class="text-gray-600 hover:text-primary font-medium">Tarifs</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-primary font-medium">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Un artisan de confiance près de chez vous</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto">Interventions rapides, travail soigné, devis gratuit. Disponible pour tous vos travaux et dépannages.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Demander un devis
+                </button>
+                <button class="bg-white hover:bg-gray-100 text-secondary font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Être rappelé
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-tools text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Nos prestations</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nous intervenons rapidement pour tous vos besoins en rénovation, dépannage ou aménagement. Chaque intervention est réalisée avec sérieux et dans le respect des délais.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Dépannage plomberie et électricité</h3>
+                    <p class="text-gray-600">Intervention rapide pour tous vos problèmes de plomberie et d'électricité, 24h/24 et 7j/7.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Petits travaux de rénovation</h3>
+                    <p class="text-gray-600">Rénovation complète ou partielle de votre intérieur avec des matériaux de qualité.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-tile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pose de cuisine, parquet, carrelage</h3>
+                    <p class="text-gray-600">Installation professionnelle de votre cuisine, pose de parquet ou carrelage avec finition impeccable.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Montage de meubles, menuiserie</h3>
+                    <p class="text-gray-600">Montage de meubles en kit, création de meubles sur mesure et travaux de menuiserie.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-bath"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Aménagement de salle de bain</h3>
+                    <p class="text-gray-600">Rénovation complète de votre salle de bain avec des solutions modernes et fonctionnelles.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Entretien & réparations diverses</h3>
+                    <p class="text-gray-600">Tous types de réparations et d'entretien pour votre maison ou appartement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-camera text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Nos derniers chantiers</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Quelques exemples concrets de nos travaux. Du petit dépannage à la rénovation complète, la qualité reste notre priorité.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="before-after-container h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Avant rénovation salle de bain" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Après rénovation salle de bain" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle">
+                            <i class="fas fa-arrows-left-right text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg">Rénovation salle de bain</h3>
+                        <p class="text-gray-600">Avant / Après</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="before-after-container h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Avant rénovation cuisine" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Après rénovation cuisine" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle">
+                            <i class="fas fa-arrows-left-right text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg">Rénovation cuisine</h3>
+                        <p class="text-gray-600">Avant / Après</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="before-after-container h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Avant pose de carrelage" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1615529162924-f8605388463a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Après pose de carrelage" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle">
+                            <i class="fas fa-arrows-left-right text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg">Pose de carrelage</h3>
+                        <p class="text-gray-600">Salle de bain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-lightbulb text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Pourquoi nous choisir ?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Un artisan à taille humaine, engagé pour vos projets</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Devis clair et gratuit</h3>
+                        <p class="text-gray-600">Un devis détaillé et transparent sans aucun engagement de votre part.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Interventions rapides</h3>
+                        <p class="text-gray-600">Disponibilité immédiate pour vos urgences et dépannages.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Travail propre et garanti</h3>
+                        <p class="text-gray-600">Chantier propre et rangé, avec une garantie sur tous nos travaux.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Matériaux de qualité</h3>
+                        <p class="text-gray-600">Utilisation de matériaux haut de gamme pour une durabilité optimale.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Disponibilité & écoute</h3>
+                        <p class="text-gray-600">À votre écoute pour comprendre vos besoins et vos attentes.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="text-primary text-2xl mr-4 mt-1">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">+10 ans d'expérience</h3>
+                        <p class="text-gray-600">Un savoir-faire acquis grâce à plus de 10 ans d'expérience sur le terrain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-euro-sign text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Tarifs indicatifs</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Chaque chantier est unique. Voici une idée des prix pratiqués (hors déplacement)</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-primary">
+                    <h3 class="text-xl font-bold mb-4">Dépannage express</h3>
+                    <p class="text-3xl font-bold text-primary mb-4">60 €</p>
+                    <p class="text-gray-600 mb-4">Intervention rapide (1h)</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Diagnostic rapide
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Réparation immédiate
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Disponibilité 7j/7
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-accent">
+                    <h3 class="text-xl font-bold mb-4">Pose de parquet</h3>
+                    <p class="text-3xl font-bold text-accent mb-4">35 €/m²</p>
+                    <p class="text-gray-600 mb-4">À partir de</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Choix des matériaux
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Pose professionnelle
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Finition impeccable
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-primary">
+                    <h3 class="text-xl font-bold mb-4">Montage de meuble</h3>
+                    <p class="text-3xl font-bold text-primary mb-4">50 €</p>
+                    <p class="text-gray-600 mb-4">Meuble simple</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Montage rapide
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Respect des instructions
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Nettoyage après travaux
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-accent">
+                    <h3 class="text-xl font-bold mb-4">Rénovation complète</h3>
+                    <p class="text-3xl font-bold text-accent mb-4">Sur devis</p>
+                    <p class="text-gray-600 mb-4">Salle de bain, cuisine, etc.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Conseil personnalisé
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Gestion complète du projet
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Garantie 2 ans
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <p class="text-lg font-bold text-gray-700">📩 Devis complet sous 24h</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-200 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-star text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ils nous ont fait confiance</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="testimonial-slide text-center">
+                    <blockquote class="text-xl italic mb-6">
+                        "Ponctuel, efficace, rien à redire. Merci !"
+                    </blockquote>
+                    <div class="flex items-center justify-center">
+                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
+                        <div class="text-left">
+                            <p class="font-bold">Marc D.</p>
+                            <p class="text-blue-100">Paris 15ème</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-10">
+                    <button class="mx-2 text-blue-200 hover:text-white">
+                        <i class="fas fa-circle text-xs"></i>
+                    </button>
+                    <button class="mx-2 text-blue-200 hover:text-white">
+                        <i class="fas fa-circle text-xs"></i>
+                    </button>
+                    <button class="mx-2 text-white">
+                        <i class="fas fa-circle text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-blue-100 text-primary p-3 rounded-full mb-4">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Contactez-nous</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Remplissez le formulaire ou appelez-nous directement</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Votre nom">
+                        </div>
+                        
+                        <div>
+                            <label for="contact" class="block text-gray-700 font-medium mb-2">Email / Téléphone</label>
+                            <input type="text" id="contact" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Email ou numéro de téléphone">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                            Envoyer la demande
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-bold mb-6">Coordonnées</h3>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Téléphone</p>
+                                    <p class="text-gray-600">06 12 34 56 78</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Email</p>
+                                    <p class="text-gray-600">contact@artisan-services.fr</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Zone d'intervention</p>
+                                    <p class="text-gray-600">Paris et Île-de-France</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Horaires</p>
+                                    <p class="text-gray-600">Lundi–Samedi : 8h à 19h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="mt-8 w-full bg-secondary hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                            Être rappelé dans la journée
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary text-white p-2 rounded-lg mr-3">
+                            <i class="fas fa-tools text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Artisan <span class="text-primary">Services Pro</span></h2>
+                    </div>
+                    <p class="text-gray-300 mb-6">Un artisan de confiance pour tous vos travaux de rénovation et dépannage en Île-de-France.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Liens rapides</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-300 hover:text-white">Services</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white">Réalisations</a></li>
+                        <li><a href="#why-us" class="text-gray-300 hover:text-white">Pourquoi nous</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-white">Tarifs</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Mentions légales</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Conditions d'utilisation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 Artisan Services Pro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple testimonial slider
+        document.addEventListener('DOMContentLoaded', function() {
+            const dots = document.querySelectorAll('.testimonial-slide + div button');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                // Remove active class from all dots
+                dots.forEach(dot => {
+                    dot.innerHTML = '<i class="fas fa-circle text-xs"></i>';
+                    dot.classList.remove('text-white');
+                    dot.classList.add('text-blue-200');
+                });
+                
+                // Add active class to current dot
+                dots[index].innerHTML = '<i class="fas fa-circle text-xs"></i>';
+                dots[index].classList.remove('text-blue-200');
+                dots[index].classList.add('text-white');
+                
+                currentSlide = index;
+            }
+            
+            // Initialize slider
+            showSlide(0);
+            
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                let nextSlide = (currentSlide + 1) % dots.length;
+                showSlide(nextSlide);
+            }, 5000);
+            
+            // Before/After slider functionality
+            const sliders = document.querySelectorAll('.before-after-container');
+            
+            sliders.forEach(slider => {
+                const handle = slider.querySelector('.slider-handle');
+                const beforeImg = slider.querySelector('.before-after-slider');
+                
+                let isDragging = false;
+                
+                function moveSlider(e) {
+                    if (!isDragging) return;
+                    
+                    const containerRect = slider.getBoundingClientRect();
+                    let x = e.clientX - containerRect.left;
+                    
+                    // Constrain within container
+                    x = Math.max(0, Math.min(x, containerRect.width));
+                    
+                    // Update slider position
+                    beforeImg.style.width = `${x}px`;
+                    handle.style.left = `${x}px`;
+                }
+                
+                handle.addEventListener('mousedown', () => {
+                    isDragging = true;
+                });
+                
+                document.addEventListener('mousemove', moveSlider);
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+                
+                // Touch events for mobile
+                handle.addEventListener('touchstart', () => {
+                    isDragging = true;
+                });
+                
+                document.addEventListener('touchmove', (e) => {
+                    moveSlider(e.touches[0]);
+                });
+                
+                document.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

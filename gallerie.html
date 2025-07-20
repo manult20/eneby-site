@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie de démonstration - Eneby Vision</title>
+  <link rel="icon" type="image/png" href="./images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .site-viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+    }
+    .site-viewer iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+    .site-viewer.active {
+      display: flex;
+    }
+    @keyframes gradient-animation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-animation 10s ease infinite;
+    }
+    .gallery-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .gradient-text {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+    }
+
+    .nav-link {
+        position: relative;
+    }
+
+    .nav-link:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover:after {
+        width: 100%;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold gradient-text">Eneby Vision</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="nav-link text-slate-200 hover:text-white px-3 py-2">Accueil</a>
+                        <a href="index.html#services" class="nav-link text-slate-200 hover:text-white px-3 py-2">Services</a>
+                        <a href="index.html#portfolio" class="nav-link text-slate-200 hover:text-white px-3 py-2">Portfolio</a>
+                        <a href="index.html#contact" class="nav-link text-slate-200 hover:text-white px-3 py-2">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <a href="#contact" class="btn-primary text-white px-6 py-2 rounded-full font-medium">Démarrer un projet</a>
+            </div>
+            <div class="-mr-2 flex md:hidden">
+                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-slate-700">Accueil</a>
+            <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-slate-700">Services</a>
+            <a href="index.html#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-slate-700">Portfolio</a>
+            <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-white hover:bg-slate-700">Contact</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500">Démarrer un projet</a>
+        </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-slate-900 overflow-hidden pt-32 pb-20 text-center">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 opacity-20 animate-gradient"></div>
+      <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">Découvrez nos réalisations</h1>
+        <p class="text-lg sm:text-xl text-slate-300 mb-10">Explorez une sélection de sites que nous avons conçus pour aider nos clients à atteindre leurs objectifs.</p>
+        <a href="#gallery" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-transform transform hover:scale-105">Voir nos exemples</a>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="gallery-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gallery items will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <!-- Fullscreen Viewer -->
+  <div id="siteViewer" class="site-viewer">
+    <div class="flex justify-between items-center p-4 bg-slate-800 text-white shadow-lg">
+      <div id="viewerTitle" class="text-lg font-semibold"></div>
+      <div class="flex items-center space-x-4">
+        <button id="prevSite" class="text-2xl hover:text-blue-400 transition-colors">◀</button>
+        <button id="nextSite" class="text-2xl hover:text-blue-400 transition-colors">▶</button>
+        <button id="closeViewer" class="text-3xl font-bold hover:text-red-500 transition-colors">×</button>
+      </div>
+    </div>
+    <iframe id="viewerFrame" title="Site Preview"></iframe>
+  </div>
+
+  <script>
+    const sites = [
+      { url: "./site-example/formapro.html", title: "Plateforme de formation en ligne", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Formation+Pro" },
+      { url: "./site-example/coiffure.html", title: "Salon de coiffure moderne", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Coiffure" },
+      { url: "./site-example/artisan.html", title: "Artisan Services Pro", img: "https://placehold.co/600x400/0f172a/f8fafc?text=Artisan+Pro" }
+    ];
+
+    let currentIndex = 0;
+    const viewer = document.getElementById("siteViewer");
+    const frame = document.getElementById("viewerFrame");
+    const title = document.getElementById("viewerTitle");
+    const galleryGrid = document.getElementById("gallery-grid");
+
+    // Populate gallery
+    sites.forEach((site, index) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card bg-slate-800 rounded-lg overflow-hidden cursor-pointer group';
+        card.innerHTML = `
+            <div class="relative h-48 overflow-hidden">
+                <img src="${site.img}" alt="${site.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-white">${site.title}</h3>
+            </div>
+        `;
+        card.addEventListener('click', () => showSite(index));
+        galleryGrid.appendChild(card);
+    });
+
+    function showSite(index) {
+      currentIndex = (index + sites.length) % sites.length;
+      const site = sites[currentIndex];
+      frame.src = site.url;
+      title.textContent = site.title;
+      viewer.classList.add("active");
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+        viewer.classList.remove("active");
+        frame.src = "about:blank";
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById("closeViewer").addEventListener("click", closeViewer);
+    document.getElementById("prevSite").addEventListener("click", () => showSite(currentIndex - 1));
+    document.getElementById("nextSite").addEventListener("click", () => showSite(currentIndex + 1));
+    
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openIcon = mobileMenuButton.querySelector('svg:first-child');
+    const closeIcon = mobileMenuButton.querySelector('svg:last-child');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+
+    // Close viewer with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && viewer.classList.contains('active')) {
+            closeViewer();
+        }
+    });
+  </script>
+</body>
+</html>
