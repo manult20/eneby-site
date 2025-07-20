@@ -111,7 +111,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white py-20 md:py-32">
+    <section class="hero-bg text-white py-20 md:py-32" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/8961699/pexels-photo-8961699.jpeg?auto=compress&w=1920&q=80') center/cover no-repeat;"></section>
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-5xl font-bold mb-6">Un artisan de confiance près de chez vous</h2>
             <p class="text-xl mb-10 max-w-2xl mx-auto">Interventions rapides, travail soigné, devis gratuit. Disponible pour tous vos travaux et dépannages.</p>
@@ -156,7 +156,7 @@
                 
                 <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-primary transition">
                     <div class="text-primary text-3xl mb-4">
-                        <i class="fas fa-tile"></i>
+                        <i class="fas fa-border-all"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Pose de cuisine, parquet, carrelage</h3>
                     <p class="text-gray-600">Installation professionnelle de votre cuisine, pose de parquet ou carrelage avec finition impeccable.</p>
@@ -211,9 +211,8 @@
                             <i class="fas fa-arrows-left-right text-gray-600"></i>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg">Rénovation salle de bain</h3>
-                        <p class="text-gray-600">Avant / Après</p>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg text-center">Rénovation salle de bain</h3>
                     </div>
                 </div>
                 
@@ -227,25 +226,23 @@
                             <i class="fas fa-arrows-left-right text-gray-600"></i>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg">Rénovation cuisine</h3>
-                        <p class="text-gray-600">Avant / Après</p>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg text-center">Rénovation cuisine</h3>
                     </div>
                 </div>
                 
                 <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
                     <div class="before-after-container h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Avant pose de carrelage" class="w-full h-full object-cover">
-                        <div class="before-after-slider">
-                            <img src="https://images.unsplash.com/photo-1615529162924-f8605388463a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Après pose de carrelage" class="w-full h-full object-cover">
+                        <img src="../images/kitchen-2165756_640.jpg" alt="Avant pose de carrelage" class="w-full h-full object-cover">
+                        <div class="before-after-slider" style="width: 50%;">
+                            <img src="../images/pexels-pixabay-280232.jpg" alt="Après pose de carrelage" class="w-full h-full object-cover">
                         </div>
-                        <div class="slider-handle">
+                        <div class="slider-handle" style="left: 50%;">
                             <i class="fas fa-arrows-left-right text-gray-600"></i>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg">Pose de carrelage</h3>
-                        <p class="text-gray-600">Salle de bain</p>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg text-center">Pose de carrelage</h3>
                     </div>
                 </div>
             </div>
@@ -437,27 +434,45 @@
             </div>
             
             <div class="max-w-4xl mx-auto">
+                <!-- Slide 1 -->
                 <div class="testimonial-slide text-center">
                     <blockquote class="text-xl italic mb-6">
-                        "Ponctuel, efficace, rien à redire. Merci !"
+                        "Travail soigné et rapide, je recommande vivement cet artisan !"
                     </blockquote>
-                    <div class="flex items-center justify-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4"></div>
-                        <div class="text-left">
-                            <p class="font-bold">Marc D.</p>
-                            <p class="text-blue-100">Paris 15ème</p>
-                        </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <p class="font-bold text-center">Sophie L.</p>
+                        <p class="text-blue-100 text-center">Boulogne-Billancourt</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="testimonial-slide text-center hidden">
+                    <blockquote class="text-xl italic mb-6">
+                        "Très professionnel, à l’écoute et ponctuel. Le résultat est parfait."
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center">
+                        <p class="font-bold text-center">Julien R.</p>
+                        <p class="text-blue-100 text-center">Paris 11ème</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="testimonial-slide text-center hidden">
+                    <blockquote class="text-xl italic mb-6">
+                        "Devis clair, intervention rapide et chantier impeccable. Merci !"
+                    </blockquote>
+                    <div class="flex flex-col items-center justify-center">
+                        <p class="font-bold text-center">Claire M.</p>
+                        <p class="text-blue-100 text-center">Saint-Denis</p>
                     </div>
                 </div>
                 
                 <div class="flex justify-center mt-10">
-                    <button class="mx-2 text-blue-200 hover:text-white">
-                        <i class="fas fa-circle text-xs"></i>
-                    </button>
-                    <button class="mx-2 text-blue-200 hover:text-white">
-                        <i class="fas fa-circle text-xs"></i>
-                    </button>
                     <button class="mx-2 text-white">
+                        <i class="fas fa-circle text-xs"></i>
+                    </button>
+                    <button class="mx-2 text-blue-200 hover:text-white">
+                        <i class="fas fa-circle text-xs"></i>
+                    </button>
+                    <button class="mx-2 text-blue-200 hover:text-white">
                         <i class="fas fa-circle text-xs"></i>
                     </button>
                 </div>
@@ -610,82 +625,86 @@
     <script>
         // Simple testimonial slider
         document.addEventListener('DOMContentLoaded', function() {
-            const dots = document.querySelectorAll('.testimonial-slide + div button');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.flex.justify-center.mt-10 button');
             let currentSlide = 0;
-            
+
             function showSlide(index) {
-                // Remove active class from all dots
-                dots.forEach(dot => {
-                    dot.innerHTML = '<i class="fas fa-circle text-xs"></i>';
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.remove('hidden');
+                    } else {
+                        slide.classList.add('hidden');
+                    }
+                });
+
+                dots.forEach((dot, i) => {
                     dot.classList.remove('text-white');
                     dot.classList.add('text-blue-200');
                 });
-                
-                // Add active class to current dot
-                dots[index].innerHTML = '<i class="fas fa-circle text-xs"></i>';
                 dots[index].classList.remove('text-blue-200');
                 dots[index].classList.add('text-white');
-                
+
                 currentSlide = index;
             }
-            
+
             // Initialize slider
             showSlide(0);
-            
+
             // Add click events to dots
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     showSlide(index);
                 });
             });
-            
+
             // Auto slide every 5 seconds
             setInterval(() => {
-                let nextSlide = (currentSlide + 1) % dots.length;
+                let nextSlide = (currentSlide + 1) % slides.length;
                 showSlide(nextSlide);
             }, 5000);
-            
+
             // Before/After slider functionality
             const sliders = document.querySelectorAll('.before-after-container');
-            
+
             sliders.forEach(slider => {
                 const handle = slider.querySelector('.slider-handle');
                 const beforeImg = slider.querySelector('.before-after-slider');
-                
+
                 let isDragging = false;
-                
+
                 function moveSlider(e) {
                     if (!isDragging) return;
-                    
+
                     const containerRect = slider.getBoundingClientRect();
                     let x = e.clientX - containerRect.left;
-                    
+
                     // Constrain within container
                     x = Math.max(0, Math.min(x, containerRect.width));
-                    
+
                     // Update slider position
                     beforeImg.style.width = `${x}px`;
                     handle.style.left = `${x}px`;
                 }
-                
+
                 handle.addEventListener('mousedown', () => {
                     isDragging = true;
                 });
-                
+
                 document.addEventListener('mousemove', moveSlider);
                 document.addEventListener('mouseup', () => {
                     isDragging = false;
                 });
-                
+
                 // Touch events for mobile
                 handle.addEventListener('touchstart', () => {
                     isDragging = true;
                 });
-                
+
                 document.addEventListener('touchmove', (e) => {
                     moveSlider(e.touches[0]);
                 });
-                
+
                 document.addEventListener('touchend', () => {
                     isDragging = false;
                 });
