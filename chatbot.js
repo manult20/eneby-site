@@ -269,18 +269,13 @@
       suggest: ["Services", "Prendre rendez-vous", "Adresse"]
     },
     {
-      questions: ["parking", "se garer", "stationnement"],
-      answer: "🅿️ Un parking public est disponible à proximité immédiate de nos locaux.",
-      suggest: ["Adresse", "Horaires", "Contact"]
-    },
-    {
       questions: ["merci", "merci!", "merci beaucoup", "super"],
       answer: "Avec plaisir ! 😊<br>Besoin d’autre chose ?",
       suggest: ["Horaires", "Prendre rendez-vous", "Services"]
     },
     {
       questions: ["site web", "internet", "web", "en ligne"],
-      answer: "🌐 Notre site internet est : <b>https://nab.fr</b><br>Toutes les infos y sont aussi.",
+      answer: "🌐 Notre site internet est : <b>https://enebyvision.com</b><br>Toutes les infos y sont aussi.",
       suggest: ["Contact", "Adresse", "Services"]
     }
   ];
