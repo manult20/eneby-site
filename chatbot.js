@@ -138,7 +138,7 @@
       }
       #eneby-chatbox {
         width: 100vw;
-        height: 100vh;
+        height: 100dvh; /* Utilise la hauteur visible dynamique */
         right: 0;
         left: 0;
         top: 0;
@@ -146,6 +146,12 @@
         border-radius: 0;
         min-width: 0;
         min-height: 0;
+        padding-bottom: env(safe-area-inset-bottom); /* Ajoute un espace pour le clavier */
+        overflow: hidden; /* Empêche le débordement */
+      }
+
+      #eneby-input-bar {
+        padding-bottom: env(safe-area-inset-bottom); /* Ajuste la barre d'entrée */
       }
     }
     #eneby-messages::-webkit-scrollbar {width:6px;}
@@ -436,5 +442,44 @@
 
   // --- Focus sur le champ de saisie après ouverture
   setTimeout(()=>{ if (chatbox.style.display === 'flex') input.focus(); }, 600);
+
+  // Ajout des styles CSS pour mobile
+  const mobileStyle = document.createElement('style');
+  mobileStyle.innerHTML = `
+    @media (max-width: 700px) {
+      #eneby-chatbox {
+        width: 100vw;
+        height: 100dvh; /* Utilise la hauteur visible dynamique */
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0;
+        min-width: 0;
+        min-height: 0;
+        padding-bottom: env(safe-area-inset-bottom); /* Ajoute un espace pour le clavier */
+        overflow: hidden; /* Empêche le débordement */
+      }
+
+      #eneby-input-bar {
+        padding-bottom: env(safe-area-inset-bottom); /* Ajuste la barre d'entrée */
+      }
+    }
+  `;
+  document.head.appendChild(mobileStyle);
+
+  // Ajout du script JS pour ajuster dynamiquement la hauteur
+  function adjustChatboxHeight() {
+    const chatbox = document.getElementById('eneby-chatbox');
+    if (window.innerWidth <= 700) {
+      const height = window.innerHeight; // Hauteur visible dynamique
+      chatbox.style.height = `${height}px`;
+    }
+  }
+
+  // Ajuste la hauteur au chargement et lors du redimensionnement
+  window.addEventListener('resize', adjustChatboxHeight);
+  window.addEventListener('orientationchange', adjustChatboxHeight);
+  adjustChatboxHeight();
 
 })();
