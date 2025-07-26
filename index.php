@@ -1,4 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
+
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -539,9 +547,6 @@
                     Prise de rendez-vous intégrée
                   </li>
                 </ul>
-                <a href="#contact" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition hidden md:inline-flex">
-                  Voir une démo <i class="fas fa-arrow-right ml-3"></i>
-                </a>
               </div>
               <div class="relative flex items-center justify-center">
                 <div class="absolute -inset-8 bg-gradient-to-tr from-blue-500/40 via-purple-500/20 to-transparent
@@ -588,9 +593,6 @@
                     Édition en ligne instantanée
                   </li>
                 </ul>
-                <a href="#contact" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition hidden md:inline-flex">
-                  Voir une démo <i class="fas fa-arrow-right ml-3"></i>
-                </a>
               </div>
               <div class="relative flex items-center justify-center">
                 <div class="absolute -inset-8 bg-gradient-to-tr from-purple-500/40 via-indigo-500/20 to-transparent
@@ -637,9 +639,6 @@
                     Synchronisation avec Google Agenda, Outlook, etc.
                   </li>
                 </ul>
-                <a href="#contact" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition hidden md:inline-flex">
-                  Voir une démo <i class="fas fa-arrow-right ml-3"></i>
-                </a>
               </div>
               <div class="relative flex items-center justify-center">
                 <div class="absolute -inset-8 bg-gradient-to-tr from-indigo-500/40 via-blue-500/20 to-transparent
@@ -1045,56 +1044,64 @@
       </div>
 
       <!-- Formulaire -->
-      <form class="space-y-5" action="contact.php" method="POST">
-        <div>
-          <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Nom complet</label>
-          <input type="text" id="name" name="name" required
-            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
-                   focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Votre nom">
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-slate-300 mb-1">
-            Email <span class="text-red-500">*</span>
-          </label>
-          <input type="email" id="email" name="email" required
-            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
-                   focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="votre@email.com">
-        </div>
-        <div>
-          <label for="phone" class="block text-sm font-medium text-slate-300 mb-1">
-            Téléphone <span class="text-red-500">*</span>
-          </label>
-          <input type="tel" id="phone" name="phone" required
-            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
-                   focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="+33 6 12 34 56 78">
-        </div>
-        <div>
-          <label for="project" class="block text-sm font-medium text-slate-300 mb-1">Type de projet</label>
-          <select id="project" name="project"
-            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
-                   focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option>Sélectionnez une option</option>
-            <option>Site Vitrine</option>
-            <option>Site Multi-Pages</option>
-            <option>Solution IA</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div>
-          <label for="message" class="block text-sm font-medium text-slate-300 mb-1">Message</label>
-          <textarea id="message" name="message" rows="4"
-            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
-                   focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Décrivez votre projet..."></textarea>
-        </div>
-        <button type="submit"
-          class="btn-primary w-full py-3 rounded font-medium text-base flex items-center justify-center">
-          Envoyer <i class="fas fa-paper-plane ml-2"></i>
-        </button>
-      </form>
+
+
+<form class="space-y-5" action="send.php" method="POST">
+
+  <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
+
+  <input type="text" name="website" style="display:none" autocomplete="off">
+
+  <div>
+    <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Nom complet</label>
+    <input type="text" id="name" name="name" required
+      class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
+             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Votre nom">
+  </div>
+  <div>
+    <label for="email" class="block text-sm font-medium text-slate-300 mb-1">
+      Email <span class="text-red-500">*</span>
+    </label>
+    <input type="email" id="email" name="email" required
+      class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
+             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="votre@email.com">
+  </div>
+  <div>
+    <label for="phone" class="block text-sm font-medium text-slate-300 mb-1">
+      Téléphone <span class="text-red-500">*</span>
+    </label>
+    <input type="tel" id="phone" name="phone" required
+      class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
+             focus:outline-none focus:ring-2 focus:ring-purple-500"
+      placeholder="+33 6 12 34 56 78">
+  </div>
+  <div>
+    <label for="project" class="block text-sm font-medium text-slate-300 mb-1">Type de projet</label>
+    <select id="project" name="project"
+      class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
+             focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option>Sélectionnez une option</option>
+      <option>Site Vitrine</option>
+      <option>Site Multi-Pages</option>
+      <option>Solution IA</option>
+      <option>Autre</option>
+    </select>
+  </div>
+  <div>
+    <label for="message" class="block text-sm font-medium text-slate-300 mb-1">Message</label>
+    <textarea id="message" name="message" rows="4"
+      class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded text-slate-200 text-base
+             focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="Décrivez votre projet..."></textarea>
+  </div>
+  <button type="submit"
+    class="btn-primary w-full py-3 rounded font-medium text-base flex items-center justify-center">
+    Envoyer <i class="fas fa-paper-plane ml-2"></i>
+  </button>
+</form>
 
     </div>
   </div>

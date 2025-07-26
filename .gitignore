@@ -1,2 +1,14 @@
 .DS_Store
 site-example/git-error-*
+
+# --------- Sensitive / backend files to keep out of the repo ---------
+send.php
+.htaccess
+.env
+composer.json
+composer.lock
+sitemap.xml
+robots.txt
+
+# Composer / vendor libraries (incl. PHPMailer)
+vendor/
